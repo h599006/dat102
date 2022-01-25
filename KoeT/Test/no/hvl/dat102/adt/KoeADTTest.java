@@ -28,7 +28,7 @@ public abstract class KoeADTTest {
 	}
 	
 	@Test
-	public void testInnKoe(T element) {
+	public void testInnKoe(int element) {
 		
 	}
 }
