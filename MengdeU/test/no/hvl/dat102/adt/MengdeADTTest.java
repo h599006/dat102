@@ -141,11 +141,42 @@ public abstract class MengdeADTTest {
 	
 	@Test
 	public void diffFelles() {
+		m1.leggTil(o1);
+		m1.leggTil(o2);
+		m1.leggTil(o3);
+		m1.leggTil(o4);
+		m1.leggTil(o5);
 		
+		m2.leggTil(o1);
+		m2.leggTil(o3);
+		m2.leggTil(o4);
+
+		begge = m1.differens(m2);
+		
+		try {
+			assertTrue(begge.inneholder(o2));
+			assertTrue(begge.inneholder(o5));
+		} catch (EmptyCollectionException e){
+			fail("DiffFelles feilet uventet " + e.getMessage());
+		}
 	}
 	
 	@Test
 	public void diffIkkeFelles() {
+		m1.leggTil(o1);
+		m1.leggTil(o2);
+		m1.leggTil(o3);
+		m1.leggTil(o4);
+		m1.leggTil(o5);
 		
+		m2.leggTil(o6);
+		m2.leggTil(o7);
+		m2.leggTil(o8);
+		
+		try {
+			assertTrue(begge.erTom());
+		} catch (EmptyCollectionException e){
+			fail("DiffIkkeFelles feilet uventet " + e.getMessage());
+		}
 	}
 }

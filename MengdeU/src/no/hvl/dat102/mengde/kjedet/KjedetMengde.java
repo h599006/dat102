@@ -87,7 +87,8 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 				if (aktuell.getElement().equals(element))
 					funnet = true;
 				else {
-					forgjenger = aktuell.getNeste();
+					forgjenger = aktuell;
+					aktuell = aktuell.getNeste();
 				}
 			}
 			if (funnet) {

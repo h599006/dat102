@@ -165,17 +165,17 @@ public class TabellMengde<T> implements MengdeADT<T> {
 	 * (MengdeADT<T>)begge; }
 	 */
 	@Override
-
 	public MengdeADT<T> union(MengdeADT<T> m2) {
 		
 		MengdeADT<T> begge = new TabellMengde<T>();
 		T element = null;
+		Iterator<T> teller = m2.oppramser();
 		
 		for (int i = 0; i < antall; i++) {
 			begge.leggTil(tab[i]);
 		}
-		Iterator<T> teller = m2.oppramser();
 		while (teller.hasNext()) {
+			element = teller.next();
 			if (!this.inneholder(element)) {
 				((TabellMengde<T>) begge).settInn(element);
 			}
