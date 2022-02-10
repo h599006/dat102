@@ -72,7 +72,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
 	@Override
 	public T fjern(T element) {
 		//TODO
-		// Søker etter og fjerner element. Returnerer null-ref ved ikke-funn
+		// Sï¿½ker etter og fjerner element. Returnerer null-ref ved ikke-funn
 
 		if (erTom())
 			throw new EmptyCollectionException("mengde");
@@ -104,8 +104,8 @@ public class TabellMengde<T> implements MengdeADT<T> {
 	}
 	
 	/*
-	 * Når vi overkjører (override) equals- meteoden er det anbefalt at vi også
-	 * overkjører hascode-metoden da en del biblioterker burker hascode sammen med
+	 * Nï¿½r vi overkjï¿½rer (override) equals- meteoden er det anbefalt at vi ogsï¿½
+	 * overkjï¿½rer hascode-metoden da en del biblioterker burker hascode sammen med
 	 * equals. Vi kommer tilbake til forklaring og bruk av hascode senere i faget.
 	 */
 	@Override
@@ -187,33 +187,50 @@ public class TabellMengde<T> implements MengdeADT<T> {
 	@Override
 	public MengdeADT<T> snitt(MengdeADT<T> m2) {
 		MengdeADT<T> snittM = new TabellMengde<T>();
+		Iterator<T> m1 = this.oppramser();
 		T element = null;
-		/*
-		 * ...
-		 */
+		
+		while (m1.hasNext()) {
+			 element = m1.next();
+			if (m2.inneholder(element)) {
+				((TabellMengde<T>) snittM).settInn(element);
+			}
+		}
+		
 		return snittM;
 	}
 
 	@Override
 	public MengdeADT<T> differens(MengdeADT<T> m2) {
-		//TODO
+		
 		MengdeADT<T> differensM = new TabellMengde<T>();
+		Iterator<T> m1 = this.oppramser();
 		T element;
-		/*
-		 * Fyll ut
-		 * 
-		 * if (!m2.inneholder(element)) ((TabellMengde<T>) differensM).settInn(element);
-		 */
-
+		
+		while (m1.hasNext()) {
+			 element = m1.next();
+			if (!m2.inneholder(element)) {
+				((TabellMengde<T>) differensM).settInn(element);
+			}
+		}
+	
 		return differensM;
 	}
 
 	@Override
 	public boolean undermengde(MengdeADT<T> m2) {
-		//TODO
+
 		boolean erUnderMengde = true;
-		// ...
-		return false;
+		Iterator<T> m1 = this.oppramser();
+		T element;
+		
+		while (m1.hasNext()) {
+			element = m1.next();
+			if (!m2.inneholder(element)) {
+				erUnderMengde = false;
+			}
+		}
+		return erUnderMengde;
 	}
 
 	@Override

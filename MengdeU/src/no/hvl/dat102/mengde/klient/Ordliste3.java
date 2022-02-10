@@ -1,4 +1,4 @@
-package no.hv.dat102.mengde.klient;
+package no.hvl.dat102.mengde.klient;
 
 import no.hvl.dat102.mengde.adt.MengdeADT;
 import no.hvl.dat102.mengde.kjedet.KjedetMengde;
@@ -11,7 +11,7 @@ public class Ordliste3 {
 
 		String[] ord1 = { "God", "dag", "Hans", "Hansen", "Hansaby", "Olsen", "Ole", "buss", "rute", "Bergen" };
 
-		String[] ord2 = { "God", "Hei", "Eva", "Oslo", "Førde", "Olsen", };
+		String[] ord2 = { "God", "Hei", "Eva", "Oslo", "Fï¿½rde", "Olsen", };
 
 		for (int i = 0; i < ord1.length; i++) {
 			ordListe1.leggTil(ord1[i]);
