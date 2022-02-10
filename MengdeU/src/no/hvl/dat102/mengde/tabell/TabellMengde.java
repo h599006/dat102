@@ -6,6 +6,7 @@ import java.util.Random;
 
 import no.hvl.dat102.exception.EmptyCollectionException;
 import no.hvl.dat102.mengde.adt.MengdeADT;
+import no.hvl.dat102.mengde.kjedet.KjedetMengde;
 
 public class TabellMengde<T> implements MengdeADT<T> {
 	// ADT-en Mengde implementert som tabell
@@ -117,15 +118,33 @@ public class TabellMengde<T> implements MengdeADT<T> {
 	}
 
 	@Override
-	public boolean equals(Object m2) {
-		//TODO
+	public boolean equals(Object ny) {
+		
 		boolean likeMengder = true;
 		T element;
+		
+		if (this == ny)
+			return true;
+		if (ny == null)
+			return false;
+		if (getClass() != ny.getClass())
+			return false;
 
-		/*
-		 * ...
-		 */
-		return likeMengder;
+		MengdeADT<T> m2 = (TabellMengde<T>) ny;
+		if (this.antall != m2.antall()) {
+			likeMengder = false;
+		} else {
+			likeMengder = true;
+			Iterator<T> teller = m2.oppramser();
+			while (teller.hasNext() && likeMengder) {
+				element = teller.next();
+				if (!this.inneholder(element)) {
+					likeMengder = false;
+				}
+			}
+			return likeMengder;
+		}
+		return false;
 	}
 
 	@Override
@@ -148,13 +167,20 @@ public class TabellMengde<T> implements MengdeADT<T> {
 	@Override
 
 	public MengdeADT<T> union(MengdeADT<T> m2) {
-		//TODO
+		
 		MengdeADT<T> begge = new TabellMengde<T>();
 		T element = null;
-		/*
-		 * ...
-		 * 
-		 */
+		
+		for (int i = 0; i < antall; i++) {
+			begge.leggTil(tab[i]);
+		}
+		Iterator<T> teller = m2.oppramser();
+		while (teller.hasNext()) {
+			if (!this.inneholder(element)) {
+				((TabellMengde<T>) begge).settInn(element);
+			}
+			
+		}
 		return begge;
 	}//
 

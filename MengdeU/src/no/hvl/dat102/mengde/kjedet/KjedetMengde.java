@@ -130,7 +130,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 
 	@Override
 	public boolean equals(Object ny) {
-		// TODO
+		
 		if (this == ny) {
 			return true;
 		}
@@ -171,7 +171,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 
 	@Override
 	public MengdeADT<T> union(MengdeADT<T> m2) {
-		// TODO
+		
 		MengdeADT<T> begge = new KjedetMengde<T>();
 		LinearNode<T> aktuell = start;
 		T element = null;
@@ -187,8 +187,7 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 			if (!this.inneholder(element)) {// tester mot "konstant" mengde
 				((KjedetMengde<T>) begge).settInn(element);
 			}
-		}
-
+		} 
 		return begge;
 	}//
 
