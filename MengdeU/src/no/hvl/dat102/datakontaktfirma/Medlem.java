@@ -10,7 +10,7 @@ public class Medlem {
 	
 	public Medlem (String navn, MengdeADT<Hobby> hobbyer, int statusIndeks) {
 		this.navn = navn;
-		this.hobbyer =hobbyer;
+		this.hobbyer = hobbyer;
 		this.statusIndeks = statusIndeks;
 	}
 	

@@ -4,6 +4,11 @@ public class Datakontakt {
 	private Medlem[] medlemmer;
 	private int antallMedlemmer;
 	
+	public Datakontakt(int lengde) {
+		medlemmer = new Medlem[lengde];
+		antallMedlemmer = 0;
+	}
+	
 	public void leggTilMedlem (Medlem person) {
 		if (!inneholder(person)) {
 			if (antallMedlemmer == medlemmer.length) {
@@ -29,7 +34,7 @@ public class Datakontakt {
 		int matchIndeks = -1;
 		
 		for (int i = 0; i < antallMedlemmer; i++) {
-			if (medlemmer[i].passerTil(medlemmer[medlemIndeks])) {
+			if (medlemmer[i].passerTil(medlemmer[medlemIndeks]) && medlemmer[i].getStatusIndeks() == -1) {
 				matchIndeks = i;
 			}
 		}
@@ -61,5 +66,9 @@ public class Datakontakt {
 			}
 		}
 		return (funnet);
+	}
+	
+	public int getAntall() {
+		return antallMedlemmer;
 	}
 }
