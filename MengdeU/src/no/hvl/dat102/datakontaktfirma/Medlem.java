@@ -43,4 +43,10 @@ public class Medlem {
 		}
 		return passer;
 	}
+	
+	public void tilSkjerm() {
+		System.out.println("Medlem: " + navn);
+		System.out.println("Hobbyer: " + hobbyer);
+		System.out.println("Statusindeks: " + statusIndeks);
+	}
 }
