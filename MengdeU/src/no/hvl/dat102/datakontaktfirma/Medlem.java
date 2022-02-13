@@ -37,8 +37,8 @@ public class Medlem {
 	
 	public boolean passerTil(Medlem medlem2) {
 		boolean passer = false;
-		
-		if (hobbyer.equals(medlem2.getHobby())) {
+	
+		if (hobbyer == medlem2.getHobby()) { //Gjør feil her
 			passer = true;
 		}
 		return passer;
@@ -46,7 +46,7 @@ public class Medlem {
 	
 	public void tilSkjerm() {
 		System.out.println("Medlem: " + navn);
-		System.out.println("Hobbyer: " + hobbyer);
+		System.out.println("Hobbyer: " + hobbyer.toString());
 		System.out.println("Statusindeks: " + statusIndeks);
 	}
 }

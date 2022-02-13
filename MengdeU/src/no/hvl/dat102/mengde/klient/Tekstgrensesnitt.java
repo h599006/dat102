@@ -18,21 +18,19 @@ public class Tekstgrensesnitt {
 		System.out.println("Navn: ");
 		String navn = myObj.nextLine();
 		
-		String hobbyerStr;
-		do {
-			System.out.println("Hobby (Skriv zz for å stoppe): ");
-			hobbyerStr = myObj.nextLine();
+		System.out.println("Hobbyer (Skriv zz for å stoppe): ");
+		String hobbyerStr = myObj.nextLine();
+		
+		while (!hobbyerStr.equals("zz")) {
 			hobbyer.leggTil(new Hobby(hobbyerStr));
+			System.out.println("Hobbyer (Skriv zz for å stoppe): ");
+			hobbyerStr = myObj.nextLine();
 		}
-		while (!hobbyerStr.equals("zz"));
 		
 		System.out.println("StatusIndeks: ");
 		int statusindeks = Integer.parseInt(myObj.nextLine());
 		
 		myObj.close();
-		
-		//hobbyer.leggTil(new Hobby(hobbyerStr));
-		
 		
 		return new Medlem(navn, hobbyer, statusindeks);
 	}
@@ -44,15 +42,17 @@ public class Tekstgrensesnitt {
 	public static void skrivParListe (Datakontakt arkiv) {
 		int indeksPar = 0;
 		int antallPar = 0;
+		Medlem[] medlemmer = arkiv.getMedlemmer();
 		
-		System.out.println("PARNAVN\t HOBBYER");
-		
+		System.out.println("PARNAVN\t\t HOBBYER");
+		//Kode ferdig herS
 		for (int i = 0; i < arkiv.getAntall() ; i++) {
-			//if (arkiv.) {
-				//System.out.println(arkiv."\t HOBBYER");
+			if (medlemmer[i].getStatusIndeks() == medlemmer[indeksPar].getStatusIndeks()) {
+				System.out.print(medlemmer[i].getNavn() + " og ");
 				antallPar++;
-			//}
-			indeksPar++;
+				indeksPar++;
+				
+			}
 		}
 	}
 }

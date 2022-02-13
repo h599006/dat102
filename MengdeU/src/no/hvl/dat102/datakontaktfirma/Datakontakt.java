@@ -32,12 +32,20 @@ public class Datakontakt {
 	public int finnPartnerFor (String medlemsnavn) {
 		int medlemIndeks = finnMedlemsIndeks(medlemsnavn);
 		int matchIndeks = -1;
+		int teller = 0;
 		
-		for (int i = 0; i < antallMedlemmer; i++) {
-			if (medlemmer[i].passerTil(medlemmer[medlemIndeks]) && medlemmer[i].getStatusIndeks() == -1) {
-				matchIndeks = i;
+		boolean matchFunnet = false;
+		
+		while (teller < antallMedlemmer && !matchFunnet) { //Får feil her pga passerTil()
+			if (medlemmer[teller].passerTil(medlemmer[medlemIndeks]) && medlemmer[teller].getStatusIndeks() == -1) {
+				matchIndeks = teller;
+				medlemmer[matchIndeks].setStatusIndeks(matchIndeks);
+				medlemmer[medlemIndeks].setStatusIndeks(matchIndeks);
+				matchFunnet = true;
 			}
+			teller++;
 		}
+		
 		return matchIndeks;
 	}
 	
@@ -70,5 +78,9 @@ public class Datakontakt {
 	
 	public int getAntall() {
 		return antallMedlemmer;
+	}
+	
+	public Medlem[] getMedlemmer() {
+		return medlemmer;
 	}
 }

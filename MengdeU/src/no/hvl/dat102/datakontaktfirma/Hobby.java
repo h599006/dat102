@@ -8,7 +8,7 @@ public class Hobby {
 	}
 	
 	public String toString() {
-		return "<" + hobbyNavn + ">";
+		return hobbyNavn;
 	}
 	
 	private Object getHobbyNavn() {
