@@ -40,19 +40,27 @@ public class Tekstgrensesnitt {
 	}
 	
 	public static void skrivParListe (Datakontakt arkiv) {
-		int indeksPar = 0;
 		int antallPar = 0;
 		Medlem[] medlemmer = arkiv.getMedlemmer();
+		String hobbyStr = "";
+		String navn = "";
+		String ut;
 		
-		System.out.println("PARNAVN\t\t HOBBYER");
-		//Kode ferdig herS
-		for (int i = 0; i < arkiv.getAntall() ; i++) {
-			if (medlemmer[i].getStatusIndeks() == medlemmer[indeksPar].getStatusIndeks()) {
-				System.out.print(medlemmer[i].getNavn() + " og ");
-				antallPar++;
-				indeksPar++;
-				
+		System.out.println(String.format("%1$-20s %2$-5s", "PARNAVN", "HOBBYER"));
+		for (int i = 0; i < arkiv.getAntall(); i++) {
+			for (int j = i+1; j < arkiv.getAntall(); j++) {
+				if (i == medlemmer[j].getStatusIndeks()) {
+					navn = medlemmer[i].getNavn() + " og " + medlemmer[j].getNavn();
+					hobbyStr = "" + medlemmer[i].getHobby();
+					
+					ut = String.format("%1$-20s %2$-5s", navn, hobbyStr);
+					System.out.println(ut);
+					antallPar++;
+				}
 			}
 		}
+		
+		System.out.println("----------------");
+		System.out.println("Antall par funnet: " + antallPar);
 	}
 }

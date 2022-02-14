@@ -5,7 +5,7 @@ import no.hvl.dat102.datakontaktfirma.Datakontakt;
 public class KlientMedlem {
 	
 	public static void main(String[] args) {
-		Datakontakt medlemmer = new Datakontakt(2);
+		Datakontakt medlemmer = new Datakontakt(4);
 		Meny meny = new Meny(medlemmer);
 		meny.start(); 
 	}

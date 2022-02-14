@@ -38,7 +38,7 @@ public class Medlem {
 	public boolean passerTil(Medlem medlem2) {
 		boolean passer = false;
 	
-		if (hobbyer == medlem2.getHobby()) { //Gjør feil her
+		if (this.getHobby().equals(medlem2.getHobby())) { 
 			passer = true;
 		}
 		return passer;

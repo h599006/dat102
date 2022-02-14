@@ -36,11 +36,11 @@ public class Datakontakt {
 		
 		boolean matchFunnet = false;
 		
-		while (teller < antallMedlemmer && !matchFunnet) { //Får feil her pga passerTil()
-			if (medlemmer[teller].passerTil(medlemmer[medlemIndeks]) && medlemmer[teller].getStatusIndeks() == -1) {
+		while (teller < antallMedlemmer && !matchFunnet) { //Fï¿½r feil her pga passerTil()
+			if (teller != medlemIndeks && medlemmer[teller].passerTil(medlemmer[medlemIndeks]) && medlemmer[teller].getStatusIndeks() == -1) {
 				matchIndeks = teller;
-				medlemmer[matchIndeks].setStatusIndeks(matchIndeks);
 				medlemmer[medlemIndeks].setStatusIndeks(matchIndeks);
+				medlemmer[matchIndeks].setStatusIndeks(medlemIndeks);
 				matchFunnet = true;
 			}
 			teller++;
@@ -50,11 +50,16 @@ public class Datakontakt {
 	}
 	
 	public void tilbakestillStatusIndeks (String medlemsnavn) {
+		boolean brytet = false;
+		int teller = 0;
 		
-		for (int i = 0; i < antallMedlemmer; i++) {
-			if (medlemmer[i].getNavn() == medlemsnavn && medlemmer[i].getStatusIndeks() != -1) {
-				medlemmer[i].setStatusIndeks(-1);
+		while (!brytet && teller < antallMedlemmer) {
+			if (medlemmer[teller].getNavn() == medlemsnavn && medlemmer[teller].getStatusIndeks() != -1) {
+				medlemmer[medlemmer[teller].getStatusIndeks()].setStatusIndeks(-1);
+				medlemmer[teller].setStatusIndeks(-1);
+				brytet = true;
 			}
+			teller++;
 		}
 	}
 	

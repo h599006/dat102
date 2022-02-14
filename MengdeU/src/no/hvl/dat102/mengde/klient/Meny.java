@@ -18,9 +18,9 @@ public class Meny {
 	  
 	 public void start(){ 
 		 
-		 MengdeADT<Hobby> hobbyer = new KjedetMengde<>();
-		 hobbyer.leggTil(new Hobby("Sjakk"));
-		 Medlem m1 = new Medlem ("Christine", hobbyer, -1);
+		 MengdeADT<Hobby> hobbyer1 = new KjedetMengde<>();
+		 hobbyer1.leggTil(new Hobby("Sjakk"));
+		 Medlem m1 = new Medlem ("Christine", hobbyer1, -1);
 		 datakontakt.leggTilMedlem(m1);
 		 m1.tilSkjerm();
 		 System.out.println("---------------");
@@ -31,14 +31,37 @@ public class Meny {
 		 tekstgr.skrivHobbyListe(m2);
 		 System.out.println("---------------");
 		 
-		
+		 
 		 datakontakt.finnPartnerFor(m2.getNavn());
 		 m1.tilSkjerm();
-		 m2.tilSkjerm();
-		 
 		 System.out.println("---------------");
+		 m2.tilSkjerm();
+		 System.out.println("---------------");
+		 
+		 
+		 MengdeADT<Hobby> hobbyer3 = new KjedetMengde<>();
+		 hobbyer3.leggTil(new Hobby("Fotball"));
+		 Medlem m3 = new Medlem ("Endre", hobbyer3, 3);
+		 datakontakt.leggTilMedlem(m3);
+		 m3.tilSkjerm();
+		 System.out.println("---------------");
+		 
+		 
+		 MengdeADT<Hobby> hobbyer4 = new KjedetMengde<>();
+		 hobbyer4.leggTil(new Hobby("Fotball"));
+		 Medlem m4 = new Medlem ("Emilie", hobbyer4, 2);
+		 datakontakt.leggTilMedlem(m4);
+		 m4.tilSkjerm();
+		 System.out.println("---------------");
+		 
+		 
+		 System.out.println("LISTE AV PAR: ");
+		 tekstgr.skrivParListe(datakontakt);
+		 datakontakt.tilbakestillStatusIndeks(m2.getNavn());
+		 System.out.println("---------------");
+		 
+		 System.out.println("LISTE ETTER Å TILBAKESTILLE STATUS: ");
 		 tekstgr.skrivParListe(datakontakt);
 		 
-		 //Fullføre bruk av alle metodene fra Datakontakt og Teksgrensesnitt
 	 } 
 }
