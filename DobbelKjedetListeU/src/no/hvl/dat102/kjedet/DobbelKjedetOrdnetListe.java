@@ -1,6 +1,7 @@
 package no.hvl.dat102.kjedet;
 
 import no.hvl.dat102.adt.DobbelKjedetOrdnetListeADT;
+import no.hvl.dat102.dobbelkjedetordnetliste.DobbelNode;
 import no.hvl.dat102.exceptions.EmptyCollectionException;
 
 public class DobbelKjedetOrdnetListe<T extends Comparable<T>> implements DobbelKjedetOrdnetListeADT<T> {
@@ -10,11 +11,16 @@ public class DobbelKjedetOrdnetListe<T extends Comparable<T>> implements DobbelK
 
 	public DobbelKjedetOrdnetListe(T minVerdi, T maksVerdi) {
 		// Første node
-		//TODO
+		DobbelNode<T> nyNode1 = new DobbelNode<T>(minVerdi);
+		foerste = nyNode1;
 		// Siste node
-		//TODO
+		DobbelNode<T> nyNode2 = new DobbelNode<T>(maksVerdi);
 		// Kjeding
-		//TODO
+		nyNode1.setNeste(nyNode2);
+		nyNode2.setForrige(nyNode1);
+		siste = nyNode2;
+
+		antall = 0;
 	}
 
 	@Override
@@ -55,9 +61,19 @@ public class DobbelKjedetOrdnetListe<T extends Comparable<T>> implements DobbelK
 	 * null-referansen
 	 */
 	private DobbelNode<T> finn(T el) {
-		return null;
-		//TODO
+		DobbelNode<T> node = null;
+		DobbelNode<T> p = null;
 
+		p = foerste.getNeste();
+		
+		while (el.compareTo(p.getElement()) > 0) {
+			p = p.getNeste();
+		} 
+
+		if (el.compareTo(p.getElement()) == 0) {
+			node = p;
+		}
+		return node;
 	}
 
 	@Override
@@ -94,5 +110,37 @@ public class DobbelKjedetOrdnetListe<T extends Comparable<T>> implements DobbelK
 		return resultat;
 
 	}
+	
+	public boolean fins(T el) {
+		boolean finnes = false;
+		DobbelNode<T> p = null;
+		
+		if ((el.compareTo(foerste.getElement()) <= 0) || (el.compareTo(siste.getElement()) >= 0)) {
+			System.out.println("Ugyldig verdi. verdi > " + foerste.getElement() + "verdi < " + siste.getElement());
+
+		} else { // Kun lovlige verdier
+				p = foerste.getNeste();
+
+			while (el.compareTo(p.getElement()) > 0) {
+				p = p.getNeste();
+			} 
+			if (el.compareTo(p.getElement()) == 0) {
+				finnes = true;
+			}
+		}
+		
+		return finnes;
+	}
+	
+	
+	public void visListe() {
+		DobbelNode<T> p = foerste.getNeste();
+
+		while (p != null && p != siste) {
+			System.out.print(p.getElement() + " ");
+			p = p.getNeste();
+		}
+	}
+
 
 }

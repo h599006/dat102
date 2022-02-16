@@ -26,9 +26,11 @@ public class KlientDobbelKjedetListe {
 		// Utskrift etter sletting
 		System.out.println(liste);
 
-		// slette t som ikek fins
+		// slette t som ikke fins
 		liste.fjern("t");
 		System.out.println(liste);
+		
+		liste.visListe();
 
 	}
 
