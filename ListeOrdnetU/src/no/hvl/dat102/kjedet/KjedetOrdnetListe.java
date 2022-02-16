@@ -22,18 +22,16 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 
 	@Override
 	public T fjernFoerste() {
-		if (erTom())
+		if (erTom()) {
 			throw new EmptyCollectionException("ordnet liste");
-		
-		T resultat = foerste.getElement();
-		if (antall == 1) {
-			foerste = null;
-			siste = null;
-		} else {
-			foerste = foerste.getNeste();
 		}
+		T resultat = foerste.getElement();
+		foerste = foerste.getNeste();
 		antall--;
 		
+		if (erTom()) {
+			siste = null;
+		}
 		return resultat;
 	}
 
@@ -41,7 +39,7 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 	public T fjernSiste() {
 		if (erTom())
 			throw new EmptyCollectionException("ordnet liste");
-		
+		/*
 		T resultat = null; 
 		LinearNode<T> forrige = null, denne = foerste;
 		while (denne != null && siste.getElement().compareTo(denne.getElement()) > 0) {
@@ -59,9 +57,8 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 			}
 			antall--;
 		}
-		return resultat;
-		
-		/*//Fikk ikke denne fra powerpointen til å funke så lagde en annen en som linger på fjern
+		return resultat; */
+		/*
 		T resultat = siste.getElement();
 		antall--;
 		
@@ -74,9 +71,13 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 				siste = siste.getNeste();
 			}
 			siste.setNeste(null);
-		}
+		} 
+		return resultat; */
 		
-		return resultat;*/
+		T resultat = siste();
+		fjern(resultat);
+		
+		return resultat;
 	}
 
 	@Override
