@@ -36,7 +36,11 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 			throw new EmptyCollectionException("ordnet liste");
 
 		T resultat = foerste();
-		fjern(resultat);
+		bak--;
+		
+		for (int i = 0; i < bak; i++) {
+			liste[i] = liste[i + 1];
+		}
 		
 		return resultat;
 	}
