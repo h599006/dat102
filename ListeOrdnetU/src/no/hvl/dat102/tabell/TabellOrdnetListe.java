@@ -24,8 +24,9 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 		if (erTom())
 			throw new EmptyCollectionException("ordnet liste");
 
-		T resultat = null;
-		// ... Fyll ut
+		T resultat = siste();
+		fjern(resultat);
+		
 		return resultat;
 	}
 
@@ -34,8 +35,9 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 		if (erTom())
 			throw new EmptyCollectionException("ordnet liste");
 
-		T resultat = null;
-		// ... Fyll ut
+		T resultat = foerste();
+		fjern(resultat);
+		
 		return resultat;
 	}
 
@@ -53,8 +55,7 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 		if (erTom())
 			throw new EmptyCollectionException("ordnet liste");
 		
-		T resultat = null;
-		// ...Fyll ut
+		T resultat = liste[bak - 1];
 
 		return resultat;
 	}
@@ -71,8 +72,23 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 
 	@Override
 	public void leggTil(T element) {
-
-		// ...Fyll ut
+		if (bak == liste.length ) {
+			utvid();
+		}
+		int i = 0;
+		
+		while (i < bak && element.compareTo(liste[i]) > 0) {
+			i++;
+		}
+		
+		int j = bak;
+		while (j > i) {
+			liste[j] = liste[j - 1];
+			j--;
+		}
+		liste[i] = element;
+		bak++;
+		
 	}
 
 	@Override
@@ -82,14 +98,34 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 
 	@Override
 	public T fjern(T element) {
-		// ...Fyll ut
+		if (erTom()) {
+			throw new EmptyCollectionException("Ordnet liste");
+		}
+		T resultat = null;
+		int indeks = finn(element);
+		
+		if (indeks != IKKE_FUNNET) {
+			resultat = liste[indeks];
+			bak--;
+			
+			for (int i = indeks; i < bak; i++) {
+				liste[i] = liste[i + 1];
+			}
+			liste[bak] = null;
+		}
 		return element;
-
 	}
 
 	private int finn(T el) {
 		int i = 0, resultat = IKKE_FUNNET;
-		// ...Fyll ut
+		if (!erTom()) {
+			while(i < bak && el.compareTo(liste[i]) > 0) {
+				i++;
+			}
+			if (i < bak && el.compareTo(liste[i]) == 0) {
+				resultat = i;
+			}
+		}
 		return resultat;
 	}
 
