@@ -12,6 +12,18 @@ public class MainPerson {
 		OrdnetListeADT<Person> kjedetListe = new KjedetOrdnetListe<>();
 		OrdnetListeADT<Person> tabellListe = new TabellOrdnetListe<>();
 		
+		Person anne = new Person("Anne", "Iversen", 1996);
+		Person ole = new Person("Ole", "Vik", 1995);
+		Person bendik = new Person("Bendik", "Ness", 1997);
+		
+		kjedetListe.leggTil(anne);
+		kjedetListe.leggTil(ole);
+		kjedetListe.leggTil(bendik);
+		
+		tabellListe.leggTil(anne);
+		tabellListe.leggTil(ole);
+		tabellListe.leggTil(bendik);
+		
 		Scanner in = new Scanner(System.in);
 		String fornavn, etternavn, svar;
 		int foedselsaar;
