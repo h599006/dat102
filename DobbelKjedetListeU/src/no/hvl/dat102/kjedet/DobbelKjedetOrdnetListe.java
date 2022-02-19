@@ -1,7 +1,6 @@
 package no.hvl.dat102.kjedet;
 
 import no.hvl.dat102.adt.DobbelKjedetOrdnetListeADT;
-import no.hvl.dat102.dobbelkjedetordnetliste.DobbelNode;
 import no.hvl.dat102.exceptions.EmptyCollectionException;
 
 public class DobbelKjedetOrdnetListe<T extends Comparable<T>> implements DobbelKjedetOrdnetListeADT<T> {
